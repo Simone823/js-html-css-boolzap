@@ -1,0 +1,178 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Hubballi', cursive;
+    font-size: 18px;
+    color: white;
+    letter-spacing: 1px;
+}
+
+img {
+    display: block;
+}
+
+/* Hover */
+.chat_user:hover {
+    background-color: #2a3942;
+    transition: background-color 200ms linear;
+}
+
+/* ------------------------------------------ */
+
+
+
+/* body */
+body {
+    background-color: #0a1014;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contenitore app */
+#app {
+    /* border: 2px solid red; */
+    max-width: 85%;
+    height: 800px;
+    flex-grow: 1;
+    display: flex;
+}
+
+/* Contenuto parte sinistra */
+aside {
+    width: 26%;
+    height: 100%;
+    background-color: #111b21;
+    border-radius: 20px;
+    border-right: 1px solid rgba(177, 175, 175, 0.5);
+    overflow: hidden;
+}
+
+.profile {
+    width: 100%;
+    height: 58px;
+    background-color: #202c33;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.user_logo-user_name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user_logo-user_name img {
+    display: block;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.user_logo-user_name h1 {
+    font-size: 20px;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+}
+
+.icons img {
+    cursor: pointer;
+}
+
+.notifications {
+    background-color: #182229;
+    padding: 20px 15px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.icon_notification {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #53bdeb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text_notification h2{
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.text_notification p {
+    color: #aaa;
+    cursor: pointer;
+}
+
+.input {
+    padding: 10px 15px;
+}
+
+.input [type="text"] {
+    font-size: 18px;
+    border: none;
+    width: 389px;
+    height: 32px;
+    border-radius: 8px;
+    padding-left: 10px;
+    background-color: #202c33;
+}
+
+/* Sezione chat utente */
+.chat_user{
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.logo_user {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.logo_user img {
+    object-fit: cover;
+    object-position: center;
+}
+
+.name_user {
+    flex-grow: 1;
+}
+
+.name_user h2 {
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.name_user p {
+    color: #aaa;
+}
+
+.message_date {
+    align-self: flex-start;
+}
+
+/* Contenuto parte destra */
+main {
+    flex-basis: calc(100% - 26%);
+    border: 2px dashed magenta;
+    border-radius: 20px;
+}
