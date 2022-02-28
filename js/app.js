@@ -3,6 +3,8 @@ const app = new Vue ({
     el: "#app",
 
     data: {
+
+        // Array oggetti contatti
         contacts: [
             {
                 name: "Michele",
@@ -97,7 +99,19 @@ const app = new Vue ({
                     },
                 ],
             },
-        ] 
+        ],
+
+        // Chat corrente
+        currentChat: 0,
+    },
+
+    methods: {
+
+        // Funzione che al click cambia il valore di currentChat e lo imposta uguale a index
+        goToChat: function(i){
+            this.currentChat = i;
+        },
+
     },
 
 });
