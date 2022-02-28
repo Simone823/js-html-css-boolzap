@@ -73,7 +73,7 @@
             </section>
 
             <!-- Sezione chat utente -->
-            <section class="chat_user" v-for="(element, index) in contacts">
+            <section class="chat_user" v-for="(element, index) in contacts" @click="goToChat(index)" :class="index == currentChat ? 'active' : '' ">
                 <!-- Logo utente -->
                 <div class="logo_user">
                     <img :src="element.avatar" alt="">
@@ -87,7 +87,7 @@
 
                 <!-- Data e ora messaggio -->
                 <div class="message_date">
-                    <p>25/01/2022</p>
+                    <p>data ultimo messaggio</p>
                 </div>
             </section>
 
@@ -96,6 +96,41 @@
         <!-- Contenuto parte destra -->
         <main>
 
+            <!-- Sezione logo e nome utente; icone controlli  -->
+            <section class="profile_main_wrapper" v-for="(element, index) in contacts" :class="index == currentChat ? 'active' : '' ">
+
+                <!-- Logo e nome profilo -->
+                <div class="profile_user">
+                    <div class="user_logo-user_name">
+                        <img :src="element.avatar" alt="">
+                        <h1>{{element.name}}</h1>
+                    </div>
+                </div>
+
+                <!-- Icone cerca e altro -->
+                <div class="icons_control">
+
+                    <!-- Icona search -->
+                    <div class="search">
+                        <img src="https://img.icons8.com/ios-glyphs/20/ffffff/search--v1.png"/>
+                    </div>
+
+                    <!-- Icona 3 puntini -->
+                    <div class="more">
+                        <img src="https://img.icons8.com/external-jumpicon-glyph-ayub-irawan/20/ffffff/external-dot-basic-ui-jumpicon-glyph-jumpicon-glyph-ayub-irawan.png"/>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sezione messaggi -->
+            <section class="main_chat">
+
+            </section>
+
+            <!-- Sezione input testo a varie icone -->
+            <section class="control_user">
+
+            </section>
 
         </main>
 
