@@ -73,16 +73,16 @@
             </section>
 
             <!-- Sezione chat utente -->
-            <section class="chat_user">
+            <section class="chat_user" v-for="(element, index) in contacts">
                 <!-- Logo utente -->
                 <div class="logo_user">
-                    <img src="img/403019_avatar_male_man_person_user_icon.png" alt="">
+                    <img :src="element.avatar" alt="">
                 </div>
 
                 <!-- Nome utente chat -->
                 <div class="name_user">
-                    <h2>Giacomo</h2>
-                    <p>Tutto fatto</p>
+                    <h2>{{element.name}}</h2>
+                    <p>testo messaggio</p>
                 </div>
 
                 <!-- Data e ora messaggio -->
