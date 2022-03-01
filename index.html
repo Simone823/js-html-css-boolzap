@@ -143,7 +143,7 @@
                     <img src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/30/ffffff/external-attachment-twitter-flatart-icons-outline-flatarticons.png"/>
                 </div>
                 <!-- Input -->
-                <input type="text" placeholder="Scrivi un messaggio">
+                <input type="text" placeholder="Scrivi un messaggio" v-model="messageUser" @keyUp.enter="newMessage()">
                 <!-- Microfono -->
                 <div class="microfone">
                     <img src="https://img.icons8.com/ios-glyphs/30/ffffff/microphone.png"/>
