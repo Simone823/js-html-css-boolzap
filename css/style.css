@@ -243,7 +243,7 @@ main {
 
 /* Sezione messaggi */
 .main_chat {
-    background-image: url(../img/3627129.jpg);
+    background-image: url(../img/3627129.png);
     padding: 40px;
     flex-grow: 1;
     background-position: center;
@@ -252,24 +252,12 @@ main {
     display: flex;
     flex-direction: column;
     display: none;
-    height: 100%;
+    height: calc(100% - 70px - 58px);
     overflow-y: auto;
 }
 
 .main_chat.active {
     display: flex;
-}
-
-/* Overlay main */
-.main_chat::after{
-    content: '';
-    display: block;
-    background-color: rgba(0, 0, 0, 0.6);
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
 }
 
 .message_user {
