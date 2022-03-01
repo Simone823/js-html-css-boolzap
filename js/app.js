@@ -120,13 +120,20 @@ const app = new Vue ({
 
             // Se il messaggio dell'utente è uguale a stringa vuota, alert
             if (this.messageUser == "") {
-                alert("Srivi un messaggio!!")
+                alert("Srivi un messaggio!!");
             } else {
-                this.contacts[this.currentChat].message.push({text: this.messageUser, status: "sent", date: new Date()})
+                this.contacts[this.currentChat].message.push({text: this.messageUser, status: "sent", date: new Date()});
             }
 
             this.messageUser = "";
         },
-    },
 
+        // Funzione crea messaggio utente
+        messageBot: function (){
+            
+            setTimeout(() => {
+                this.contacts[this.currentChat].message.push({text: "ok", status: "recei", date: new Date()});
+            }, 1000);
+        },
+    },
 });
