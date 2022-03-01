@@ -269,8 +269,30 @@ main {
     display: none;
     z-index: 99999;
     word-wrap: break-word;
+    position: relative;
 }
 
+.message_user.sent::after {
+    content: '';
+    display: block;
+    border: 8px solid #005c4b;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+}
+
+.message_user.received::after {
+    content: '';
+    display: block;
+    border: 8px solid #202c33;
+    position: absolute;
+    top: 0;
+    right: 100%;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+}
 
 .message_user .text_message {
     margin-bottom: 10px;
@@ -286,11 +308,13 @@ main {
 .message_user.sent {
     background-color: #005c4b;
     align-self: flex-end;
+    border-top-right-radius: 0;
 }
 
 /* Classe received message */
 .message_user.received {
     background-color: #202c33;
     align-self: flex-start;
+    border-top-left-radius: 0;
 }
 
