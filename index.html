@@ -123,13 +123,17 @@
             </section>
 
             <!-- Sezione messaggi -->
-            <section class="main_chat">
+            <section class="main_chat" v-for="(element, index) in contacts" :class="index == currentChat ? 'active' : ''">
+                <div class="message_user" v-for="message in element.message" :class="[message.status == 'sent' ? 'sent' : 'received', index == currentChat ? 'active' : '']">
+                    <p class="text_message">{{message.text}}</p>
+                    <p class="date_message">{{message.date}}</p>
+                </div>
 
             </section>
 
-            <!-- Sezione input testo a varie icone -->
+            <!-- Sezione input testo e varie icone -->
             <section class="control_user">
-                
+
                 <!-- Smile -->
                 <div class="smile">
                     <img src="https://img.icons8.com/material-outlined/30/ffffff/happy--v1.png"/>

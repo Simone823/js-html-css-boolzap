@@ -28,8 +28,11 @@ img {
     background-color: #2a3942;
 }
 
-/* ------------------------------------------ */
+.message_user.active {
+    display: block;
+}
 
+/* ------------------------------------------ */
 
 
 /* body */
@@ -213,27 +216,6 @@ main {
     cursor: pointer;
 }
 
-.main_chat {
-    background-image: url(../img/468739.jpg);
-    padding: 40px;
-    flex-grow: 1;
-    background-position: center;
-    background-size: cover;
-    position: relative;
-}
-
-/* Overlay main */
-.main_chat::after{
-    content: '';
-    display: block;
-    background-color: rgba(0, 0, 0, 0.8);
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
-
 .control_user {
     height: 70px;
     background-color: #202c33;
@@ -257,5 +239,67 @@ main {
     border: none;
     background-color: #2a3942;
     font-size: 20px;
+}
+
+/* Sezione messaggi */
+.main_chat {
+    background-image: url(../img/3627129.jpg);
+    padding: 40px;
+    flex-grow: 1;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    display: none;
+}
+
+.main_chat.active {
+    display: flex;
+}
+
+/* Overlay main */
+.main_chat::after{
+    content: '';
+    display: block;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.message_user {
+    width: 270px;
+    padding: 8px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: #202c33;
+    display: none;
+    z-index: 99999;
+}
+
+
+.message_user .text_message {
+    margin-bottom: 10px;
+}
+
+.message_user .date_message {
+    font-size: 12px;
+    text-align: end;
+    color: #aaa;
+}
+
+/* Classe sent message */
+.message_user.sent {
+    background-color: #005c4b;
+    align-self: flex-end;
+}
+
+/* Classe received message */
+.message_user.received {
+    background-color: #202c33;
+    align-self: flex-start;
 }
 
