@@ -103,6 +103,9 @@ const app = new Vue ({
 
         // Chat corrente
         currentChat: 0,
+
+        // Input messaggio utente
+        messageUser: "",
     },
 
     methods: {
@@ -112,6 +115,18 @@ const app = new Vue ({
             this.currentChat = i;
         },
 
+        // Funzione che aggiunge il messaggio scritto dall'utente all'array contacts
+        newMessage: function() {
+
+            // Se il messaggio dell'utente è uguale a stringa vuota, alert
+            if (this.messageUser == "") {
+                alert("Srivi un messaggio!!")
+            } else {
+                this.contacts[this.currentChat].message.push({text: this.messageUser, status: "sent", date: new Date()})
+            }
+
+            this.messageUser = "";
+        },
     },
 
 });
