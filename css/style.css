@@ -280,6 +280,7 @@ main {
     background-color: #202c33;
     display: none;
     z-index: 99999;
+    word-wrap: break-word;
 }
 
 
