@@ -270,6 +270,7 @@ main {
     z-index: 99999;
     word-wrap: break-word;
     position: relative;
+    filter: drop-shadow(0px 0px 3px white);
 }
 
 .message_user.sent::after {
@@ -317,4 +318,3 @@ main {
     align-self: flex-start;
     border-top-left-radius: 0;
 }
-
