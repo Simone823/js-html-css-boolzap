@@ -183,6 +183,10 @@ aside {
     align-self: flex-start;
 }
 
+.message_date p {
+    font-size: 14px;
+}
+
 /* Contenuto parte destra */
 main {
     width: calc(100% - 26%);
