@@ -82,12 +82,14 @@
                 <!-- Nome utente chat -->
                 <div class="name_user">
                     <h2>{{element.name}}</h2>
-                    <p>testo messaggio</p>
+                    <!-- <p>{{element.message[element.message.length - 1].text}}</p> -->
+                    <p>ultimo testo</p>
                 </div>
 
                 <!-- Data e ora messaggio -->
                 <div class="message_date">
-                    <p>data ultimo messaggio</p>
+                    <p>{{element.message[element.message.length - 1].date}}</p>
+                    <!-- <p>data ultimo messaggio</p> -->
                 </div>
             </section>
 
