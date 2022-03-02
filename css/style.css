@@ -204,6 +204,7 @@ main {
     display: flex;
     align-items: center;
     display: none;
+    position: relative;
 }
 
 .profile_user {
@@ -258,10 +259,43 @@ main {
     display: none;
     height: calc(100% - 70px - 58px);
     overflow-y: auto;
+    position: relative;
 }
 
 .main_chat.active {
     display: flex;
+}
+
+
+.main_chat .dropdown_wrapper {
+    background-color: #202c33;
+    width: 200px;
+    position: absolute;
+    top: 5px;
+    right: 20px;
+    z-index: 1;
+    border-radius: 10px;
+    box-shadow: 0 0 10px white;
+    overflow: hidden;
+    display: none;
+}
+
+.dropdown_wrapper.active {
+    display: block;
+}
+
+.dropdown_wrapper ul li{
+    list-style: none;
+    cursor: pointer;
+    padding: 10px 0;
+}
+
+.dropdown_wrapper ul li h2{
+    padding-left: 15px;
+}
+
+.dropdown_wrapper ul li:hover {
+    background-color: #2a3942;
 }
 
 .message_user {
@@ -271,7 +305,6 @@ main {
     margin-bottom: 20px;
     background-color: #202c33;
     display: none;
-    z-index: 99999;
     word-wrap: break-word;
     position: relative;
     filter: drop-shadow(0px 0px 3px white);

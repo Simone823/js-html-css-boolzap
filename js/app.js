@@ -106,6 +106,8 @@ const app = new Vue ({
 
         // Input messaggio utente
         messageUser: "",
+
+        isOpen: false,
     },
 
     methods: {
@@ -150,6 +152,16 @@ const app = new Vue ({
                     date: `${new Date().getDate()}\/${new Date().getMonth() + 1}\/${new Date().getFullYear()} ${new Date().getHours()}\:${new Date().getMinutes()}\:${new Date().getSeconds()}`,
                 });
             }, 1000);
+        },
+
+        openAndCloseDropdown: function() {
+            
+            if (this.isOpen == false) {
+                this.isOpen = true;
+            } else {
+                this.isOpen = false;
+            }
+            // console.log(this.isOpen);
         },
     },
 });
