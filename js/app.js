@@ -122,7 +122,7 @@ const app = new Vue ({
             if (this.messageUser == "") {
                 alert("Srivi un messaggio!!");
             } else {
-                this.contacts[this.currentChat].message.push({text: this.messageUser, status: "sent", date: new Date()});
+                this.contacts[this.currentChat].message.push({text: this.messageUser, status: "sent", date: `${new Date().getDate()}\/${new Date().getMonth() + 1}\/${new Date().getFullYear()} ${new Date().getHours()}\:${new Date().getMinutes()}\:${new Date().getSeconds()}`});
             }
 
             this.messageUser = "";
@@ -132,7 +132,7 @@ const app = new Vue ({
         messageBot: function (){
             
             setTimeout(() => {
-                this.contacts[this.currentChat].message.push({text: "ok", status: "recei", date: new Date()});
+                this.contacts[this.currentChat].message.push({text: "ok", status: "received", date: `${new Date().getDate()}\/${new Date().getMonth() + 1}\/${new Date().getFullYear()} ${new Date().getHours()}\:${new Date().getMinutes()}\:${new Date().getSeconds()}`});
             }, 1000);
         },
     },
