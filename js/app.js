@@ -122,7 +122,15 @@ const app = new Vue ({
             if (this.messageUser == "") {
                 alert("Srivi un messaggio!!");
             } else {
-                this.contacts[this.currentChat].message.push({text: this.messageUser, status: "sent", date: `${new Date().getDate()}\/${new Date().getMonth() + 1}\/${new Date().getFullYear()} ${new Date().getHours()}\:${new Date().getMinutes()}\:${new Date().getSeconds()}`});
+                // Pusho il messaggio scritto dall'utente nell'oggetto message dell'array contacts 
+                this.contacts[this.currentChat].message.push({
+                    text: this.messageUser, 
+                    status: "sent", 
+                    date: `${new Date().getDate()}\/${new Date().getMonth() + 1}\/${new Date().getFullYear()} ${new Date().getHours()}\:${new Date().getMinutes()}\:${new Date().getSeconds()}`,
+                });
+                
+                // Richiamo funzione messageBot
+                this.messageBot();
             }
 
             this.messageUser = "";
@@ -131,8 +139,13 @@ const app = new Vue ({
         // Funzione crea messaggio utente
         messageBot: function (){
             
+            // Dopo un timeout faccio partire la mia funzione
             setTimeout(() => {
-                this.contacts[this.currentChat].message.push({text: "ok", status: "received", date: `${new Date().getDate()}\/${new Date().getMonth() + 1}\/${new Date().getFullYear()} ${new Date().getHours()}\:${new Date().getMinutes()}\:${new Date().getSeconds()}`});
+                this.contacts[this.currentChat].message.push({
+                    text: "ok", 
+                    status: "received", 
+                    date: `${new Date().getDate()}\/${new Date().getMonth() + 1}\/${new Date().getFullYear()} ${new Date().getHours()}\:${new Date().getMinutes()}\:${new Date().getSeconds()}`,
+                });
             }, 1000);
         },
     },
