@@ -138,10 +138,13 @@ const app = new Vue ({
 
         // Funzione crea messaggio utente
         messageBot: function (){
-            
+
+            // Indice contatto attivo
+            const indexContatto = this.currentChat;
+
             // Dopo un timeout faccio partire la mia funzione
             setTimeout(() => {
-                this.contacts[this.currentChat].message.push({
+                this.contacts[indexContatto].message.push({
                     text: "ok", 
                     status: "received", 
                     date: `${new Date().getDate()}\/${new Date().getMonth() + 1}\/${new Date().getFullYear()} ${new Date().getHours()}\:${new Date().getMinutes()}\:${new Date().getSeconds()}`,
