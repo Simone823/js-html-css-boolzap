@@ -107,6 +107,7 @@ const app = new Vue ({
         // Input messaggio utente
         messageUser: "",
 
+        // Dropdown is open
         isOpen: false,
     },
 
@@ -163,5 +164,11 @@ const app = new Vue ({
             }
             // console.log(this.isOpen);
         },
+
+        deleteMessage: function(i) {
+            // console.log(this.contacts[this.currentChat].message.splice());
+            this.contacts[this.currentChat].message.splice(i, 1);
+        },
+
     },
 });
