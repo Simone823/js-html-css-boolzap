@@ -69,11 +69,11 @@
 
             <!-- Sezione input -->
             <section class="input">
-                <input type="text" placeholder="Cerca o inizia una nuova chat">
+                <input @keyUp="searchContact()" v-model="inputSearch" type="text" placeholder="Cerca o inizia una nuova chat">
             </section>
 
             <!-- Sezione chat utente -->
-            <section class="chat_user" v-for="(element, index) in contacts" @click="goToChat(index)" :class="index == currentChat ? 'active' : '' ">
+            <section class="chat_user" v-for="(element, index) in contacts" @click="goToChat(index)" :class="[index == currentChat ? 'active' : '', element.visible == false ? 'display_none' : 'display_block' ]">
                 <!-- Logo utente -->
                 <div class="logo_user">
                     <img :src="element.avatar" alt="">
@@ -88,7 +88,7 @@
 
                 <!-- Data e ora messaggio -->
                 <div class="message_date">
-                    <p>{{element.message[element.message.length - 1].date}}</p>
+                    <p>{{element.message[element.message.length - 1]?.date}}</p>
                     <!-- <p>data ultimo messaggio</p> -->
                 </div>
             </section>
@@ -129,7 +129,7 @@
 
                 <div class="message_user" v-for="message in element.message" :class="[message.status == 'sent' ? 'sent' : 'received', index == currentChat ? 'active' : '']">
                     <p class="text_message">{{message.text}}</p>
-                    <p class="date_message">{{message.date}}</p>
+                    <p class="date_message">{{message?.date}}</p>
                 </div>
 
                 <div class="dropdown_wrapper" :class="isOpen == true ? 'active' : '' " >
