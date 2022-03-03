@@ -32,6 +32,14 @@ img {
     display: block;
 }
 
+.chat_user.display_none{
+    display: none;
+}
+
+.chat_user.display_block {
+    display: flex;
+}
+
 /* ------------------------------------------ */
 
 
