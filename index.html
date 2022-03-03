@@ -127,20 +127,20 @@
             <!-- Sezione messaggi -->
             <section class="main_chat" v-for="(element, index) in contacts" :class="index == currentChat ? 'active' : ''">
 
+                <div class="message_user" v-for="message in element.message" :class="[message.status == 'sent' ? 'sent' : 'received', index == currentChat ? 'active' : '']">
+                    <p class="text_message">{{message.text}}</p>
+                    <p class="date_message">{{message.date}}</p>
+                </div>
+
                 <div class="dropdown_wrapper" :class="isOpen == true ? 'active' : '' " >
                     <ul>
                         <li>
                             <h2>Elimina Chat</h2>
                         </li>
                         <li>
-                            <h2>Elimina Messaggio</h2>
+                            <h2 @click="deleteMessage()">Elimina Messaggio</h2>
                         </li>
                     </ul>
-                </div>
-
-                <div class="message_user" v-for="message in element.message" :class="[message.status == 'sent' ? 'sent' : 'received', index == currentChat ? 'active' : '']">
-                    <p class="text_message">{{message.text}}</p>
-                    <p class="date_message">{{message.date}}</p>
                 </div>
 
             </section>
