@@ -172,6 +172,7 @@ const app = new Vue ({
         deleteMessage: function(i) {
             // console.log(this.contacts[this.currentChat].message.splice());
             this.contacts[this.currentChat].message.splice(i, 1);
+            this.isOpen = false;
         },
 
         // Funzione trova contatto
@@ -190,6 +191,7 @@ const app = new Vue ({
 
         deleteAllChat: function() {
             while(typeof (index = this.contacts[this.currentChat].message.shift()) !== "undefined" );
+            this.isOpen = false;
         },
 
     },
