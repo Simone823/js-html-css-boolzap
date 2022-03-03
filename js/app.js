@@ -109,6 +109,9 @@ const app = new Vue ({
 
         // Dropdown is open
         isOpen: false,
+
+        // Messaggio input search bar
+        inputSearch: "",
     },
 
     methods: {
@@ -165,9 +168,24 @@ const app = new Vue ({
             // console.log(this.isOpen);
         },
 
+        // Funzione elimina singolo messaggio
         deleteMessage: function(i) {
             // console.log(this.contacts[this.currentChat].message.splice());
             this.contacts[this.currentChat].message.splice(i, 1);
+        },
+
+        // Funzione trova contatto
+        searchContact: function() {
+
+            for (let i = 0; i < this.contacts.length; i++) {
+
+                if (this.contacts[i].name.toLowerCase().includes(this.inputSearch.toLowerCase())) {
+                    this.contacts[i].visible = true;
+    
+                } else {
+                    this.contacts[i].visible = false;
+                }
+            }
         },
 
     },
