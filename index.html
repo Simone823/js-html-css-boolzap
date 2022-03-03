@@ -135,7 +135,7 @@
                 <div class="dropdown_wrapper" :class="isOpen == true ? 'active' : '' " >
                     <ul>
                         <li>
-                            <h2>Elimina Chat</h2>
+                            <h2 @click="deleteAllChat()" >Elimina Chat</h2>
                         </li>
                         <li>
                             <h2 @click="deleteMessage()">Elimina Messaggio</h2>

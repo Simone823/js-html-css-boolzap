@@ -188,5 +188,9 @@ const app = new Vue ({
             }
         },
 
+        deleteAllChat: function() {
+            while(typeof (index = this.contacts[this.currentChat].message.shift()) !== "undefined" );
+        },
+
     },
 });
