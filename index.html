@@ -26,196 +26,233 @@
     <!-- Contenitore App -->
     <div id="app">
 
-        <!-- Contenuto parte sinistra -->
-        <aside>
+        <!-- Loader -->
+        <div v-if="loadingWindow < 100" class="loader">
 
-            <!-- Sezione profilo -->
-            <section class="profile">
+            <!-- Logo -->
+            <figure class="logo">
+                <img src="./img/boolzap_logo.ico" alt="">
+            </figure>
 
-                <!-- Logo e nome profilo -->
-                <div class="user_logo-user_name">
-                    <img src="img/my_user_logo.svg" alt="">
-                    <h1>Simone</h1>
+            <!-- Title -->
+            <h1>Connessione a Boolzapp Web in corso...</h1>
+
+            <!-- Bar wrapper -->
+            <div class="bar_wrapper">
+
+                <!-- % progressing  -->
+                <p class="percent_progressing">{{loadingWindow}}</p>
+
+                <!-- Bar -->
+                <div class="bar">
+                    <div class="progress"></div>
                 </div>
-
-                <!-- Icone -->
-                <div class="icons">
-                    <!-- Icona refresh -->
-                    <div class="refresh">
-                        <img src="https://img.icons8.com/ios-glyphs/20/ffffff/refresh--v1.png"/>
-                    </div>
-                    <!-- Icona chat -->
-                    <div class="chat">
-                        <img src="https://img.icons8.com/external-nawicon-glyph-nawicon/20/ffffff/external-chat-communication-nawicon-glyph-nawicon.png"/>
-                    </div>
-                    <!-- Icona 3 puntini -->
-                    <div class="more">
-                        <img src="https://img.icons8.com/external-jumpicon-glyph-ayub-irawan/20/ffffff/external-dot-basic-ui-jumpicon-glyph-jumpicon-glyph-ayub-irawan.png"/>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Sezione controllo notifiche -->
-            <section class="notifications">
-
-                <!-- Icona notifica -->
-                <div class="icon_notification">
-                    <img :class="notification == false ? 'active' : '' " src="./img/bell-slash-solid.svg"/>
-                    <img :class="notification == true ? 'active' : '' " src="./img/bell-solid.svg" alt="">
-                </div>
-                
-                <!-- Testo controllo notifiche -->
-                <div class="text_notification">
-                    <h2 :class="notification == false ? 'active' : '' ">Ricevi notifiche di nuovi messaggi</h2>
-                    <h2 :class="notification == true ? 'active' : '' ">Smetti di ricevere notifiche</h2>
-                    <p :class="notification == false ? 'active' : '' " @click="toggleNotification()">Attiva notifiche desktop &#62;</p>
-                    <p :class="notification == true ? 'active' : '' " @click="toggleNotification()">Disattiva notifiche desktop &#62;</p>
-                </div>
-            </section>
-
-            <!-- Sezione input -->
-            <section class="input">
-                <input @keyUp="searchContact()" v-model="inputSearch" type="text" placeholder="Cerca o inizia una nuova chat">
-            </section>
-
-            <!-- Sezione chat utente -->
-            <section class="chat_user" v-for="(element, index) in contacts" @click="goToChat(index)" :class="[index == currentChat ? 'active' : '', element.visible == false ? 'display_none' : 'display_block' ]">
-                <!-- Logo utente -->
-                <div class="logo_user">
-                    <img :src="element.avatar" alt="">
-                </div>
-
-                <!-- Nome utente chat -->
-                <div class="name_user">
-                    <h2>{{element.name}}</h2>
-                    <p>{{element.message[element.message.length - 1].text}}</p>
-                    <!-- <p>ultimo testo</p> -->
-                </div>
-
-                <!-- Data e ora messaggio -->
-                <div class="message_date">
-                    <p>{{element.message[element.message.length - 1]?.date}}</p>
-                    <!-- <p>data ultimo messaggio</p> -->
-                </div>
-            </section>
-
-        </aside>
-
-        <!-- Main nessuna chat selezionata -->
-        <main v-if="currentChat == -1" class="no_chat_selected">
-            
-            <!-- Wrapper -->
-            <div class="wrapper">
-                <!-- Logo -->
-                <figure class="logo">
-                    <img src="./img//whastapp_web.svg" alt="">
-                </figure>
-
-                <!-- Description -->
-                <div class="description">
-                    <h3>Boolzapp Web</h3>
-                    <p>Invia e ricevi messaggi senza connettere il telefono. Usa Boolzapp su un massimo di 4 dispositivi.</p>
-                </div>
-
             </div>
+        </div>
 
-        </main>
+        <!-- Loading == 100% -->
+        <div v-if="loadingWindow == 100" class="loading_false">
 
-        <!-- Contenuto parte destra -->
-        <main v-else>
-
-            <!-- Sezione logo e nome utente; icone controlli  -->
-            <section class="profile_main_wrapper" v-for="(element, index) in contacts" :class="index == currentChat ? 'active' : '' ">
-
-                <!-- Logo e nome profilo -->
-                <div class="profile_user">
-
-                    <!-- Logo user -->
-                    <div class="user_logo">
+            <!-- Contenuto parte sinistra -->
+            <aside>
+            
+                <!-- Sezione profilo -->
+                <section class="profile">
+            
+                    <!-- Logo e nome profilo -->
+                    <div class="user_logo-user_name">
+                        <img src="img/my_user_logo.svg" alt="">
+                        <h1>Simone</h1>
+                    </div>
+            
+                    <!-- Icone -->
+                    <div class="icons">
+                        <!-- Icona refresh -->
+                        <div class="refresh">
+                            <img src="https://img.icons8.com/ios-glyphs/20/ffffff/refresh--v1.png" />
+                        </div>
+                        <!-- Icona chat -->
+                        <div class="chat">
+                            <img
+                                src="https://img.icons8.com/external-nawicon-glyph-nawicon/20/ffffff/external-chat-communication-nawicon-glyph-nawicon.png" />
+                        </div>
+                        <!-- Icona 3 puntini -->
+                        <div class="more">
+                            <img
+                                src="https://img.icons8.com/external-jumpicon-glyph-ayub-irawan/20/ffffff/external-dot-basic-ui-jumpicon-glyph-jumpicon-glyph-ayub-irawan.png" />
+                        </div>
+                    </div>
+                </section>
+            
+                <!-- Sezione controllo notifiche -->
+                <section class="notifications">
+            
+                    <!-- Icona notifica -->
+                    <div class="icon_notification">
+                        <img :class="notification == false ? 'active' : '' " src="./img/bell-slash-solid.svg" />
+                        <img :class="notification == true ? 'active' : '' " src="./img/bell-solid.svg" alt="">
+                    </div>
+            
+                    <!-- Testo controllo notifiche -->
+                    <div class="text_notification">
+                        <h2 :class="notification == false ? 'active' : '' ">Ricevi notifiche di nuovi messaggi</h2>
+                        <h2 :class="notification == true ? 'active' : '' ">Smetti di ricevere notifiche</h2>
+                        <p :class="notification == false ? 'active' : '' " @click="toggleNotification()">Attiva notifiche desktop
+                            &#62;</p>
+                        <p :class="notification == true ? 'active' : '' " @click="toggleNotification()">Disattiva notifiche desktop
+                            &#62;</p>
+                    </div>
+                </section>
+            
+                <!-- Sezione input -->
+                <section class="input">
+                    <input @keyUp="searchContact()" v-model="inputSearch" type="text" placeholder="Cerca o inizia una nuova chat">
+                </section>
+            
+                <!-- Sezione chat utente -->
+                <section class="chat_user" v-for="(element, index) in contacts" @click="goToChat(index)"
+                    :class="[index == currentChat ? 'active' : '', element.visible == false ? 'display_none' : 'display_block' ]">
+                    <!-- Logo utente -->
+                    <div class="logo_user">
                         <img :src="element.avatar" alt="">
                     </div>
-
-                    <!-- User name, user online -->
-                    <div class="user_description">
+            
+                    <!-- Nome utente chat -->
+                    <div class="name_user">
                         <h2>{{element.name}}</h2>
-                        <p>{{element.online}}</p>
+                        <p>{{element.message[element.message.length - 1].text}}</p>
+                        <!-- <p>ultimo testo</p> -->
                     </div>
-                </div>
-
-                <!-- Icone cerca e altro -->
-                <div class="icons_control">
-
-                    <!-- Icona search -->
-                    <div class="search">
-                        <img src="https://img.icons8.com/ios-glyphs/20/ffffff/search--v1.png"/>
+            
+                    <!-- Data e ora messaggio -->
+                    <div class="message_date">
+                        <p>{{element.message[element.message.length - 1]?.date}}</p>
+                        <!-- <p>data ultimo messaggio</p> -->
                     </div>
-
-                    <!-- Icona 3 puntini -->
-                    <div class="more" :class="isOpen == true ? 'active' : '' ">
-                        <img @click="openAndCloseDropdown()" src="https://img.icons8.com/external-jumpicon-glyph-ayub-irawan/20/ffffff/external-dot-basic-ui-jumpicon-glyph-jumpicon-glyph-ayub-irawan.png"/>
+                </section>
+            
+            </aside>
+            
+            <!-- Main nessuna chat selezionata -->
+            <main v-if="currentChat == -1" class="no_chat_selected">
+            
+                <!-- Wrapper -->
+                <div class="wrapper">
+                    <!-- Logo -->
+                    <figure class="logo">
+                        <img src="./img//whastapp_web.svg" alt="">
+                    </figure>
+            
+                    <!-- Description -->
+                    <div class="description">
+                        <h3>Boolzapp Web</h3>
+                        <p>Invia e ricevi messaggi senza connettere il telefono. Usa Boolzapp su un massimo di 4 dispositivi.</p>
                     </div>
+            
                 </div>
-            </section>
-
-            <!-- Sezione messaggi -->
-            <section class="main_chat" v-for="(element, index) in contacts" :class="index == currentChat ? 'active' : ''">
-
-                <div class="message_user" v-for="message in element.message" :class="[message.status == 'sent' ? 'sent' : 'received', index == currentChat ? 'active' : '']">
-                    <p class="text_message">{{message.text}}</p>
-                    
-                    <!-- Date message and read status -->
-                    <div class="date_and_read_status">
-                        <p class="date_message">{{message?.date}}</p>
-
-                        <!-- Read status message -->
-                        <figure v-if="message.readStatus == true" class="read_status">
-                            <img src="./img/check_blue.svg" alt="">
-                            <img src="./img/check_blue.svg" alt="">
-                        </figure>
-    
-                        <figure v-else class="read_status">
-                            <img src="./img/check_blue.svg" alt="">
-                            <img src="./img/check_gray.svg" alt="">
-                        </figure>
+            
+            </main>
+            
+            <!-- Contenuto parte destra -->
+            <main v-else>
+            
+                <!-- Sezione logo e nome utente; icone controlli  -->
+                <section class="profile_main_wrapper" v-for="(element, index) in contacts"
+                    :class="index == currentChat ? 'active' : '' ">
+            
+                    <!-- Logo e nome profilo -->
+                    <div class="profile_user">
+            
+                        <!-- Logo user -->
+                        <div class="user_logo">
+                            <img :src="element.avatar" alt="">
+                        </div>
+            
+                        <!-- User name, user online -->
+                        <div class="user_description">
+                            <h2>{{element.name}}</h2>
+                            <p>{{element.online}}</p>
+                        </div>
                     </div>
+            
+                    <!-- Icone cerca e altro -->
+                    <div class="icons_control">
+            
+                        <!-- Icona search -->
+                        <div class="search">
+                            <img src="https://img.icons8.com/ios-glyphs/20/ffffff/search--v1.png" />
+                        </div>
+            
+                        <!-- Icona 3 puntini -->
+                        <div class="more" :class="isOpen == true ? 'active' : '' ">
+                            <img @click="openAndCloseDropdown()"
+                                src="https://img.icons8.com/external-jumpicon-glyph-ayub-irawan/20/ffffff/external-dot-basic-ui-jumpicon-glyph-jumpicon-glyph-ayub-irawan.png" />
+                        </div>
+                    </div>
+                </section>
+            
+                <!-- Sezione messaggi -->
+                <section class="main_chat" v-for="(element, index) in contacts" :class="index == currentChat ? 'active' : ''">
+            
+                    <div class="message_user" v-for="message in element.message"
+                        :class="[message.status == 'sent' ? 'sent' : 'received', index == currentChat ? 'active' : '']">
+                        <p class="text_message">{{message.text}}</p>
+            
+                        <!-- Date message and read status -->
+                        <div class="date_and_read_status">
+                            <p class="date_message">{{message?.date}}</p>
+            
+                            <!-- Read status message -->
+                            <figure v-if="message.readStatus == true" class="read_status">
+                                <img src="./img/check_blue.svg" alt="">
+                                <img src="./img/check_blue.svg" alt="">
+                            </figure>
+            
+                            <figure v-else class="read_status">
+                                <img src="./img/check_blue.svg" alt="">
+                                <img src="./img/check_gray.svg" alt="">
+                            </figure>
+                        </div>
+            
+                    </div>
+            
+                    <!-- Dropdown 3 puntini -->
+                    <div class="dropdown_wrapper" :class="isOpen == true ? 'active' : '' ">
+                        <ul>
+                            <li>
+                                <h2 @click="deleteChat()">Elimina Chat</h2>
+                            </li>
+                            <li>
+                                <h2 @click="deleteAllMessage()">Elimina Messaggio</h2>
+                            </li>
+                        </ul>
+                    </div>
+            
+                </section>
+            
+                <!-- Sezione input testo e varie icone -->
+                <section class="control_user">
+            
+                    <!-- Smile -->
+                    <div class="smile">
+                        <img src="https://img.icons8.com/material-outlined/30/ffffff/happy--v1.png" />
+                    </div>
+                    <!-- Graffetta -->
+                    <div class="attachment">
+                        <img
+                            src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/30/ffffff/external-attachment-twitter-flatart-icons-outline-flatarticons.png" />
+                    </div>
+                    <!-- Input -->
+                    <input type="text" placeholder="Scrivi un messaggio" v-model="messageUser" @keyUp.enter="newMessage()">
+                    <!-- Microfono -->
+                    <div class="microfone">
+                        <img src="https://img.icons8.com/ios-glyphs/30/ffffff/microphone.png" />
+                    </div>
+                </section>
+            
+            </main>
 
-                </div>
-
-                <!-- Dropdown 3 puntini -->
-                <div class="dropdown_wrapper" :class="isOpen == true ? 'active' : '' " >
-                    <ul>
-                        <li>
-                            <h2 @click="deleteChat()" >Elimina Chat</h2>
-                        </li>
-                        <li>
-                            <h2 @click="deleteAllMessage()">Elimina Messaggio</h2>
-                        </li>
-                    </ul>
-                </div>
-
-            </section>
-
-            <!-- Sezione input testo e varie icone -->
-            <section class="control_user">
-
-                <!-- Smile -->
-                <div class="smile">
-                    <img src="https://img.icons8.com/material-outlined/30/ffffff/happy--v1.png"/>
-                </div>
-                <!-- Graffetta -->
-                <div class="attachment">
-                    <img src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/30/ffffff/external-attachment-twitter-flatart-icons-outline-flatarticons.png"/>
-                </div>
-                <!-- Input -->
-                <input type="text" placeholder="Scrivi un messaggio" v-model="messageUser" @keyUp.enter="newMessage()">
-                <!-- Microfono -->
-                <div class="microfone">
-                    <img src="https://img.icons8.com/ios-glyphs/30/ffffff/microphone.png"/>
-                </div>
-            </section>
-
-        </main>
-
+        </div>
 
     </div>
 

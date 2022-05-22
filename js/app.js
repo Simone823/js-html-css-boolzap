@@ -116,6 +116,9 @@ const app = new Vue ({
             },
         ],
 
+        // Loading window
+        loadingWindow: 0,
+
         // Chat corrente
         currentChat: -1,
 
@@ -280,5 +283,30 @@ const app = new Vue ({
         toggleNotification: function() {
             this.notification = !this.notification;
         },
+
+        // Funzione progress loading window
+        incrementLoadingWindow: function() {
+            
+            // recupero il contenitore progress
+            const divProgress = document.querySelector(".progress");
+
+            // Intervallo set interval 20 increment loadingWindow
+            const intervallo = setInterval(() => {
+
+                this.loadingWindow++;
+
+                // Imposto la larghezza in % al div progress uguale a loadingWindow
+                divProgress.style.width = `${this.loadingWindow}%`;
+
+                if (this.loadingWindow == 100) {
+                  clearInterval(intervallo);
+                }
+            }, 10);
+        }
+    },
+
+    mounted() {
+        // Richiamo funzione incremenetLoadingWindow
+        this.incrementLoadingWindow();
     },
 });
