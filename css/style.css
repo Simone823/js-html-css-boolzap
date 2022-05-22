@@ -21,6 +21,23 @@ img {
     transition: background-color 200ms linear;
 }
 
+.icons .refresh:hover,
+.icons .chat:hover,
+.icons .more:hover,
+.icons_control .search:hover,
+.icons_control .more:hover {
+    background-color: rgba(129, 128, 128, 0.5);
+    transition: all 300ms linear;
+}
+
+.text_notification p:hover {
+    text-decoration: underline;
+}
+
+.dropdown_wrapper ul li:hover {
+    background-color: #2a3942;
+}
+
 /* Classi active */
 .profile_main_wrapper.active{
     display: flex;
@@ -42,6 +59,34 @@ img {
     display: flex;
 }
 
+.icon_notification img.active,
+.text_notification h2.active,
+.text_notification p.active {
+    display: block;
+    -webkit-animation: displayIcon 600ms linear;
+}
+
+.icons_control .more.active {
+    background-color: rgba(129, 128, 128, 0.5);
+}
+
+@keyframes displayIcon {
+    from {
+        display: none;
+        opacity: 0;
+    }
+
+    to {
+        display: block;
+        opacity: 1;
+    }
+}
+
+.dropdown_wrapper.active {
+    display: block;
+}
+
+/* Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
     background-color: #2a3942;
@@ -146,13 +191,6 @@ aside {
     cursor: pointer;
 }
 
-.icons .refresh:hover,
-.icons .chat:hover,
-.icons .more:hover {
-    background-color: rgba(129, 128, 128, 0.5);
-    transition: all 300ms linear;
-}
-
 .icons img {
     width: 22px;
     height: 22px;
@@ -185,22 +223,7 @@ aside {
     display: none;
 }
 
-.icon_notification img.active {
-    display: block;
-    -webkit-animation: displayIcon 600ms linear;
-}
 
-@keyframes displayIcon {
-    from {
-        display: none;
-        opacity: 0;
-    }
-
-    to {
-        display: block;
-        opacity: 1;
-    }
-}
 
 .text_notification h2{
     font-size: 20px;
@@ -208,20 +231,10 @@ aside {
     display: none;
 }
 
-.text_notification h2.active,
-.text_notification p.active {
-    display: block;
-    -webkit-animation: displayIcon 600ms linear;
-}
-
 .text_notification p {
     color: #aaa;
     cursor: pointer;
     display: none;
-}
-
-.text_notification p:hover {
-    text-decoration: underline;
 }
 
 .input {
@@ -384,16 +397,6 @@ main {
     align-items: center;
 }
 
-.icons_control .search:hover,
-.icons_control .more:hover {
-    background-color: rgba(129, 128, 128, 0.5);
-    transition: all 300ms linear;
-}
-
-.icons_control .more.active {
-    background-color: rgba(129, 128, 128, 0.5);
-}
-
 .icons_control img{
     width: 22px;
     height: 22px;
@@ -461,10 +464,6 @@ main {
     -webkit-animation: opacity 250ms linear;
 }
 
-.dropdown_wrapper.active {
-    display: block;
-}
-
 .dropdown_wrapper ul li{
     list-style: none;
     cursor: pointer;
@@ -473,10 +472,6 @@ main {
 
 .dropdown_wrapper ul li h2{
     padding-left: 15px;
-}
-
-.dropdown_wrapper ul li:hover {
-    background-color: #2a3942;
 }
 
 .message_user {
