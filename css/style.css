@@ -82,10 +82,6 @@ img {
     }
 }
 
-.dropdown_wrapper.active {
-    display: block;
-}
-
 /* Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
@@ -462,6 +458,10 @@ main {
     overflow: hidden;
     display: none;
     -webkit-animation: opacity 250ms linear;
+}
+
+.dropdown_wrapper.active {
+    display: block;
 }
 
 .dropdown_wrapper ul li{
