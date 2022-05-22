@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Link Google font hubballi-->
+    <!-- Link Google font open sans-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hubballi&display=swap" rel="stylesheet">
@@ -16,7 +16,10 @@
     <!-- Link CSS -->
     <link rel="stylesheet" href="css/style.css">
 
-    <title>Boolzap</title>
+    <!-- Link icon boolzap -->
+    <link rel="icon" href="./img//boolzap_logo.ico" type="icon">
+
+    <title>Boolzapp Web</title>
 </head>
 <body>
 
@@ -31,7 +34,7 @@
 
                 <!-- Logo e nome profilo -->
                 <div class="user_logo-user_name">
-                    <img src="img/2213426.jpg" alt="">
+                    <img src="img/my_user_logo.svg" alt="">
                     <h1>Simone</h1>
                 </div>
 
@@ -57,13 +60,16 @@
 
                 <!-- Icona notifica -->
                 <div class="icon_notification">
-                    <img src="https://img.icons8.com/ios-filled/20/000000/bell.png"/>
+                    <img :class="notification == false ? 'active' : '' " src="./img/bell-slash-solid.svg"/>
+                    <img :class="notification == true ? 'active' : '' " src="./img/bell-solid.svg" alt="">
                 </div>
                 
                 <!-- Testo controllo notifiche -->
                 <div class="text_notification">
-                    <h2>Ricevi notifiche di nuovi messaggi</h2>
-                    <p>Attiva notifiche dekstop &#62;</p>
+                    <h2 :class="notification == false ? 'active' : '' ">Ricevi notifiche di nuovi messaggi</h2>
+                    <h2 :class="notification == true ? 'active' : '' ">Smetti di ricevere notifiche</h2>
+                    <p :class="notification == false ? 'active' : '' " @click="toggleNotification()">Attiva notifiche desktop &#62;</p>
+                    <p :class="notification == true ? 'active' : '' " @click="toggleNotification()">Disattiva notifiche desktop &#62;</p>
                 </div>
             </section>
 
@@ -82,8 +88,8 @@
                 <!-- Nome utente chat -->
                 <div class="name_user">
                     <h2>{{element.name}}</h2>
-                    <!-- <p>{{element.message[element.message.length - 1].text}}</p> -->
-                    <p>ultimo testo</p>
+                    <p>{{element.message[element.message.length - 1].text}}</p>
+                    <!-- <p>ultimo testo</p> -->
                 </div>
 
                 <!-- Data e ora messaggio -->
@@ -95,17 +101,44 @@
 
         </aside>
 
+        <!-- Main nessuna chat selezionata -->
+        <main v-if="currentChat == -1" class="no_chat_selected">
+            
+            <!-- Wrapper -->
+            <div class="wrapper">
+                <!-- Logo -->
+                <figure class="logo">
+                    <img src="./img//whastapp_web.svg" alt="">
+                </figure>
+
+                <!-- Description -->
+                <div class="description">
+                    <h3>Boolzapp Web</h3>
+                    <p>Invia e ricevi messaggi senza connettere il telefono. Usa Boolzapp su un massimo di 4 dispositivi.</p>
+                </div>
+
+            </div>
+
+        </main>
+
         <!-- Contenuto parte destra -->
-        <main>
+        <main v-else>
 
             <!-- Sezione logo e nome utente; icone controlli  -->
             <section class="profile_main_wrapper" v-for="(element, index) in contacts" :class="index == currentChat ? 'active' : '' ">
 
                 <!-- Logo e nome profilo -->
                 <div class="profile_user">
-                    <div class="user_logo-user_name">
+
+                    <!-- Logo user -->
+                    <div class="user_logo">
                         <img :src="element.avatar" alt="">
-                        <h1>{{element.name}}</h1>
+                    </div>
+
+                    <!-- User name, user online -->
+                    <div class="user_description">
+                        <h2>{{element.name}}</h2>
+                        <p>{{element.online}}</p>
                     </div>
                 </div>
 
@@ -118,7 +151,7 @@
                     </div>
 
                     <!-- Icona 3 puntini -->
-                    <div class="more">
+                    <div class="more" :class="isOpen == true ? 'active' : '' ">
                         <img @click="openAndCloseDropdown()" src="https://img.icons8.com/external-jumpicon-glyph-ayub-irawan/20/ffffff/external-dot-basic-ui-jumpicon-glyph-jumpicon-glyph-ayub-irawan.png"/>
                     </div>
                 </div>
@@ -129,16 +162,33 @@
 
                 <div class="message_user" v-for="message in element.message" :class="[message.status == 'sent' ? 'sent' : 'received', index == currentChat ? 'active' : '']">
                     <p class="text_message">{{message.text}}</p>
-                    <p class="date_message">{{message?.date}}</p>
+                    
+                    <!-- Date message and read status -->
+                    <div class="date_and_read_status">
+                        <p class="date_message">{{message?.date}}</p>
+
+                        <!-- Read status message -->
+                        <figure v-if="message.readStatus == true" class="read_status">
+                            <img src="./img/check_blue.svg" alt="">
+                            <img src="./img/check_blue.svg" alt="">
+                        </figure>
+    
+                        <figure v-else class="read_status">
+                            <img src="./img/check_blue.svg" alt="">
+                            <img src="./img/check_gray.svg" alt="">
+                        </figure>
+                    </div>
+
                 </div>
 
+                <!-- Dropdown 3 puntini -->
                 <div class="dropdown_wrapper" :class="isOpen == true ? 'active' : '' " >
                     <ul>
                         <li>
-                            <h2 @click="deleteAllChat()" >Elimina Chat</h2>
+                            <h2 @click="deleteChat()" >Elimina Chat</h2>
                         </li>
                         <li>
-                            <h2 @click="deleteMessage()">Elimina Messaggio</h2>
+                            <h2 @click="deleteAllMessage()">Elimina Messaggio</h2>
                         </li>
                     </ul>
                 </div>
@@ -168,6 +218,10 @@
 
 
     </div>
+
+    <!-- Day js script -->
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+    <script>dayjs().format()</script>
 
     <!-- Link JavaScript -->
     <script src="js/app.js"></script>
