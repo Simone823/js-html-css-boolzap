@@ -293,12 +293,14 @@ const app = new Vue ({
             setTimeout(() => {
                 // Intervallo set interval 20 increment loadingWindow
                 const intervallo = setInterval(() => {
-    
+
+                    // incremento loadingWindow
                     this.loadingWindow++;
     
                     // Imposto la larghezza in % al div progress uguale a loadingWindow
                     divProgress.style.width = `${this.loadingWindow}%`;
     
+                    // Se loadingWindow è uguale a 100 stop interval increment
                     if (this.loadingWindow == 100) {
                       clearInterval(intervallo);
                     }
@@ -309,7 +311,7 @@ const app = new Vue ({
     },
 
     mounted() {
-        // Richiamo funzione incremenetLoadingWindow
+        // Richiamo funzione incrementLoadingWindow
         this.incrementLoadingWindow();
     },
 });
