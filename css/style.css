@@ -113,6 +113,7 @@ img {
     align-items: center;
     gap: 20px;
     text-align: center;
+    -webkit-animation: opacity 400ms linear;
 }
 
 .loader .logo {
@@ -142,6 +143,7 @@ img {
 }
 
 .loader .bar_wrapper .bar .progress {
+    width: 0%;
     height: 100%;
     border-radius: 999px;
     background-color: #005c4b;

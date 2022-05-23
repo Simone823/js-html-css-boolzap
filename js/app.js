@@ -290,18 +290,21 @@ const app = new Vue ({
             // recupero il contenitore progress
             const divProgress = document.querySelector(".progress");
 
-            // Intervallo set interval 20 increment loadingWindow
-            const intervallo = setInterval(() => {
+            setTimeout(() => {
+                // Intervallo set interval 20 increment loadingWindow
+                const intervallo = setInterval(() => {
+    
+                    this.loadingWindow++;
+    
+                    // Imposto la larghezza in % al div progress uguale a loadingWindow
+                    divProgress.style.width = `${this.loadingWindow}%`;
+    
+                    if (this.loadingWindow == 100) {
+                      clearInterval(intervallo);
+                    }
+                }, 10);
+            }, 350);
 
-                this.loadingWindow++;
-
-                // Imposto la larghezza in % al div progress uguale a loadingWindow
-                divProgress.style.width = `${this.loadingWindow}%`;
-
-                if (this.loadingWindow == 100) {
-                  clearInterval(intervallo);
-                }
-            }, 10);
         }
     },
 
