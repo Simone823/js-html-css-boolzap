@@ -128,6 +128,9 @@ const app = new Vue ({
         // Dropdown is open
         isOpen: false,
 
+        // Dropdown add new user
+        dropdownNewUser: false,
+
         // Messaggio input search bar
         inputSearch: "",
 
@@ -151,6 +154,17 @@ const app = new Vue ({
             'Disattiva le notifiche per disattivare il suono',
             'Bene grazie'
         ],
+
+        // Array avatar new user
+        arrayAvatar: [
+            'img/avatar_5.svg',
+            'img/avatar_6.svg',
+            'img/avatar_7.svg',
+            'img/avatar_8.svg'
+        ],
+
+        // New user
+        newUser: "",
     },
 
     methods: {
@@ -246,9 +260,13 @@ const app = new Vue ({
             // console.log(this.isOpen);
         },
 
-        // open and close dropdown more aside
-        openAndCloseDropMoreAside: function() {
-            this.dropMoreAside = !this.dropMoreAside;
+        openDropdownNewUser: function() {
+            
+            if (this.dropdownNewUser == false) {
+                this.dropdownNewUser = true;
+            } else {
+                this.dropdownNewUser = false;
+            }
         },
 
         // Funzione trova contatto
@@ -306,6 +324,40 @@ const app = new Vue ({
                 }, 10);
             }, 350);
 
+        },
+
+        // Funzione crea nuovo utente
+        addNewUser: function() {
+
+            // Funzione genera numero random
+            function getRandomInt(min, max) {
+                min = Math.ceil(min);
+                max = Math.floor(max);
+                return Math.floor(Math.random() * (max - min) + min);
+            }
+
+            // Se l'input newUser è stringa vuota
+            if(this.newUser == "") {
+                alert("Inserisci il nome del nuovo utente");
+            } else {
+
+                // Pusho il nuovo contatto nell'array contacts
+                this.contacts.push(
+                    {
+                        name: this.newUser,
+                        avatar: this.arrayAvatar[getRandomInt(0, this.arrayAvatar.length)],
+                        visible: true,
+                        online: "",
+                        message: [],
+                    }
+                );
+    
+                // Svuoto l'input newUser
+                this.newUser = "";
+
+                // Imposto dropdownNewUser uguale a false
+                this.dropdownNewUser = false;
+            }
         }
     },
 

@@ -43,6 +43,10 @@ img {
     display: flex;
 }
 
+.icons .chat.active {
+    background-color: rgba(129, 128, 128, 0.5);
+}
+
 .chat_user.active {
     background-color: #2a3942;
 }
@@ -237,6 +241,58 @@ aside {
     height: 22px;
     cursor: pointer;
     margin: 0 auto;
+}
+
+.dropdown_add_user {
+    width: 200px;
+    padding: 35px 20px;
+    position: absolute;
+    top: 100%;
+    right: 10%;
+    text-align: center;
+    z-index: 1;
+    background-color: #202c33;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    display: none;
+    -webkit-animation: opacity 250ms linear;
+}
+
+.dropdown_add_user.active {
+    display: flex;
+}
+
+.dropdown_add_user label {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.dropdown_add_user input {
+    background-color: #111B21;
+    border-radius: 5px;
+    border: none;
+    padding: 4px 8px;
+    box-shadow: 0 0 5px black;
+}
+
+.dropdown_add_user button {
+    background-color: #005c4b9a;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 0;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 0 5px #005c4b9a;
+}
+
+.dropdown_add_user button:hover {
+    background-color: #005c4b;
+    box-shadow: 0 0 5px #005c4b;
+    transition: all 300ms linear;
 }
 
 .notifications {

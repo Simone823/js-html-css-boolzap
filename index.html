@@ -72,15 +72,20 @@
                             <img src="https://img.icons8.com/ios-glyphs/20/ffffff/refresh--v1.png" />
                         </div>
                         <!-- Icona chat -->
-                        <div class="chat">
-                            <img
-                                src="https://img.icons8.com/external-nawicon-glyph-nawicon/20/ffffff/external-chat-communication-nawicon-glyph-nawicon.png" />
+                        <div class="chat" @click="openDropdownNewUser()" :class="dropdownNewUser == true ? 'active' : '' ">
+                            <img src="https://img.icons8.com/external-nawicon-glyph-nawicon/20/ffffff/external-chat-communication-nawicon-glyph-nawicon.png" />
                         </div>
                         <!-- Icona 3 puntini -->
                         <div class="more">
-                            <img
-                                src="https://img.icons8.com/external-jumpicon-glyph-ayub-irawan/20/ffffff/external-dot-basic-ui-jumpicon-glyph-jumpicon-glyph-ayub-irawan.png" />
+                            <img src="https://img.icons8.com/external-jumpicon-glyph-ayub-irawan/20/ffffff/external-dot-basic-ui-jumpicon-glyph-jumpicon-glyph-ayub-irawan.png" />
                         </div>
+                    </div>
+
+                    <!-- Dropdown add user -->
+                    <div class="dropdown_add_user" :class="dropdownNewUser == true ? 'active' : '' ">
+                        <label for="">Aggiungi nuovo Utente</label>
+                        <input v-model="newUser" type="text" placeholder="Nome Utente" name="" id="">
+                        <button @click="addNewUser()">ADD</button>
                     </div>
                 </section>
             
