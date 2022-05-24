@@ -101,23 +101,23 @@ img {
 
 /* app */
 #app {
-    background-color: #0a1014;
     width: 100vw;
     height: 100vh;
+    background-color: #0a1014;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Loader */
+/* div Loader < 100 */
 .loader {
     width: 380px;
     padding: 10px;
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    text-align: center;
     -webkit-animation: opacity 400ms linear;
 }
 
@@ -154,12 +154,12 @@ img {
     background-color: #005c4b;
 }
 
-/* contenitore loading_false */
+/* contenitore loading == 100 */
 .loading_false {
     /* border: 2px solid red; */
-    max-width: 85%;
-    height: 850px;
     flex-grow: 1;
+    max-width: 85%;
+    height: 90%;
     display: flex;
     -webkit-animation: opacity 600ms linear;
     position: relative;
@@ -200,58 +200,15 @@ aside {
     position: relative;
 }
 
-.user_logo-user_name {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.user_logo-user_name img {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-}
-
-.user_logo-user_name h1 {
-    font-size: 20px;
-}
-
-.icons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-.icons .refresh,
-.icons .chat,
-.icons .more {
-    width: 40px;
-    height: 40px;
-    border-radius: 9999px;
-    background-color: transparent;
-    padding: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-}
-
-.icons img {
-    width: 22px;
-    height: 22px;
-    cursor: pointer;
-    margin: 0 auto;
-}
-
+/* Dropdown add new User */
 .dropdown_add_user {
     width: 200px;
     padding: 35px 20px;
     position: absolute;
     top: 100%;
     right: 10%;
-    text-align: center;
     z-index: 1;
+    text-align: center;
     background-color: #202c33;
     border-radius: 10px;
     box-shadow: 0 4px 10px black;
@@ -259,8 +216,8 @@ aside {
     flex-direction: column;
     justify-content: center;
     gap: 20px;
-    display: none;
     -webkit-animation: opacity 250ms linear;
+    display: none;
 }
 
 .dropdown_add_user.active {
@@ -295,6 +252,49 @@ aside {
     box-shadow: 0 0 5px #005c4b;
     transition: all 300ms linear;
 }
+/* ------------------------------------------------ */
+
+.user_logo-user_name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user_logo-user_name img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.user_logo-user_name h1 {
+    font-size: 20px;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.icons .refresh,
+.icons .chat,
+.icons .more {
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    border-radius: 9999px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.icons img {
+    width: 22px;
+    height: 22px;
+}
 
 .notifications {
     background-color: #182229;
@@ -321,8 +321,6 @@ aside {
     display: none;
 }
 
-
-
 .text_notification h2{
     font-size: 20px;
     margin-bottom: 5px;
@@ -340,12 +338,12 @@ aside {
 }
 
 .input [type="text"] {
-    font-size: 18px;
-    border: none;
     width: 100%;
     height: 32px;
-    border-radius: 8px;
     padding: 0 10px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
     background-color: #202c33;
 }
 
