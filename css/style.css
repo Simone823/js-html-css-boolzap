@@ -299,6 +299,19 @@ aside {
     align-items: center;
     gap: 10px;
     cursor: pointer;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.chat_user::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 80%;
+    height: 1px;
+    background-color: rgba(88, 88, 88, 0.548);
 }
 
 .logo_user {
