@@ -94,7 +94,7 @@ img {
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: black;
+    background-color: rgb(29, 29, 29);
 }
 /* ------------------------------------------ */
 
