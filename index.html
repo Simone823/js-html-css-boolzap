@@ -120,13 +120,13 @@
                     <!-- Nome utente chat -->
                     <div class="name_user">
                         <h2>{{element.name}}</h2>
-                        <p>{{element.message[element.message.length - 1].text}}</p>
+                        <p v-if="element.message[element.message.length - 1]?.text">{{element.message[element.message.length - 1].text}}</p>
                         <!-- <p>ultimo testo</p> -->
                     </div>
             
                     <!-- Data e ora messaggio -->
                     <div class="message_date">
-                        <p>{{element.message[element.message.length - 1]?.date}}</p>
+                        <p v-if="element.message[element.message.length - 1]?.date">{{element.message[element.message.length - 1]?.date}}</p>
                         <!-- <p>data ultimo messaggio</p> -->
                     </div>
                 </section>
@@ -194,13 +194,13 @@
                 <!-- Sezione messaggi -->
                 <section class="main_chat" v-for="(element, index) in contacts" :class="index == currentChat ? 'active' : ''">
             
-                    <div class="message_user" v-for="message in element.message"
+                    <div v-if="element.message" class="message_user" v-for="message in element.message"
                         :class="[message.status == 'sent' ? 'sent' : 'received', index == currentChat ? 'active' : '']">
-                        <p class="text_message">{{message.text}}</p>
+                        <p v-if="message.text" class="text_message">{{message.text}}</p>
             
                         <!-- Date message and read status -->
                         <div class="date_and_read_status">
-                            <p class="date_message">{{message?.date}}</p>
+                            <p v-if="message.date" class="date_message">{{message?.date}}</p>
             
                             <!-- Read status message -->
                             <figure v-if="message.readStatus == true" class="read_status">
@@ -220,10 +220,10 @@
                     <div class="dropdown_wrapper" :class="isOpen == true ? 'active' : '' ">
                         <ul>
                             <li>
-                                <h2 @click="deleteChat()">Elimina Chat</h2>
+                                <h2 @click="deleteAllMessage()">Elimina Messaggi</h2>
                             </li>
                             <li>
-                                <h2 @click="deleteAllMessage()">Elimina Messaggio</h2>
+                                <h2 @click="deleteChat()">Elimina Chat</h2>
                             </li>
                         </ul>
                     </div>

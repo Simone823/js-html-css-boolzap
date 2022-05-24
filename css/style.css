@@ -483,7 +483,7 @@ main {
     height: calc(100% - 70px - 58px);
     overflow-y: auto;
     position: relative;
-    -webkit-animation: opacity 300ms linear;
+    -webkit-animation: opacity 600ms linear;
 }
 
 .main_chat.active {

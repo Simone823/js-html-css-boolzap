@@ -265,10 +265,9 @@ const app = new Vue ({
             }
         },
 
-        // Funzione elimina singolo messaggio
+        // Funzione elimina tutti i messaggi
         deleteAllMessage: function(i) {
-            // console.log(this.contacts[this.currentChat].message.splice());
-            this.contacts[this.currentChat].message.splice(this.contacts[this.currentChat].message, 1);
+            this.contacts[this.currentChat].message.splice(this.contacts[this.currentChat].message.lenght - 1);
             this.isOpen = false;
         },
 
