@@ -357,6 +357,9 @@ const app = new Vue ({
 
                 // Imposto dropdownNewUser uguale a false
                 this.dropdownNewUser = false;
+
+                // Imposto currentChat uguale all'indice dell'ultimo contatto
+                this.currentChat = this.contacts.length - 1;
             }
         }
     },
