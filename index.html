@@ -115,24 +115,26 @@
                 </section>
             
                 <!-- Sezione chat utente -->
-                <section class="chat_user" v-for="(element, index) in contacts" @click="goToChat(index)"
-                    :class="[index == currentChat ? 'active' : '', element.visible == false ? 'display_none' : 'display_block' ]">
-                    <!-- Logo utente -->
-                    <div class="logo_user">
-                        <img :src="element.avatar" alt="">
-                    </div>
-            
-                    <!-- Nome utente chat -->
-                    <div class="name_user">
-                        <h2>{{element.name}}</h2>
-                        <p v-if="element.message[element.message.length - 1]?.text">{{element.message[element.message.length - 1].text}}</p>
-                        <!-- <p>ultimo testo</p> -->
-                    </div>
-            
-                    <!-- Data e ora messaggio -->
-                    <div class="message_date">
-                        <p v-if="element.message[element.message.length - 1]?.date">{{element.message[element.message.length - 1]?.date}}</p>
-                        <!-- <p>data ultimo messaggio</p> -->
+                <section class="chat_user_wrapper">
+                    <div class="chat_user" v-for="(element, index) in contacts" @click="goToChat(index)"
+                        :class="[index == currentChat ? 'active' : '', element.visible == false ? 'display_none' : 'display_block' ]">
+                        <!-- Logo utente -->
+                        <div class="logo_user">
+                            <img :src="element.avatar" alt="">
+                        </div>
+                
+                        <!-- Nome utente chat -->
+                        <div class="name_user">
+                            <h2>{{element.name}}</h2>
+                            <p v-if="element.message[element.message.length - 1]?.text">{{element.message[element.message.length - 1].text}}</p>
+                            <!-- <p>ultimo testo</p> -->
+                        </div>
+                
+                        <!-- Data e ora messaggio -->
+                        <div class="message_date">
+                            <p v-if="element.message[element.message.length - 1]?.date">{{element.message[element.message.length - 1]?.date}}</p>
+                            <!-- <p>data ultimo messaggio</p> -->
+                        </div>
                     </div>
                 </section>
             

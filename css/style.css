@@ -186,9 +186,12 @@ aside {
     border-bottom-right-radius: 0;
     border-right: 1px solid rgba(177, 175, 175, 0.4);
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .profile {
+    flex-shrink: 0;
     width: 100%;
     height: 58px;
     padding: 0 15px;
@@ -348,6 +351,11 @@ aside {
 }
 
 /* Sezione chat utente */
+.chat_user_wrapper {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
 .chat_user{
     padding: 10px 15px;
     display: flex;
