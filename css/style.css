@@ -169,6 +169,7 @@ img {
     display: flex;
     -webkit-animation: opacity 600ms linear;
     position: relative;
+    filter: drop-shadow(0 0 10px black);
 }
 
 @-webkit-keyframes opacity {
