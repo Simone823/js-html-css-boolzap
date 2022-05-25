@@ -318,7 +318,7 @@ const app = new Vue ({
                 for (let j = 0; j < this.contacts[i].message.length; j++) {
 
                     if (this.contacts[i].message[j].text.toLowerCase().includes(this.inputSearchMessage.toLowerCase())) {
-                      console.log(this.contacts[i].message[j].visible = true);
+                      this.contacts[i].message[j].visible = true;
                     } else {
                       this.contacts[i].message[j].visible = false;
                     }
