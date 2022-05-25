@@ -61,9 +61,12 @@ img {
     display: none;
 }
 
-.chat_user.display_block,
-.message_user.display_block {
+.chat_user.display_block {
     display: flex;
+}
+
+.message_user.display_block {
+    display: block;
 }
 
 .icon_notification img.active,
