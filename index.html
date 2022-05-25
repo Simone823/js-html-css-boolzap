@@ -186,7 +186,7 @@
                     <div class="icons_control">
             
                         <!-- Icona search -->
-                        <div class="search">
+                        <div class="search" @click="openDropdownSearchMessage()" :class="dropdownSearchMessage == true ? 'active' : '' ">
                             <img src="https://img.icons8.com/ios-glyphs/20/ffffff/search--v1.png" />
                         </div>
             
@@ -196,13 +196,19 @@
                                 src="https://img.icons8.com/external-jumpicon-glyph-ayub-irawan/20/ffffff/external-dot-basic-ui-jumpicon-glyph-jumpicon-glyph-ayub-irawan.png" />
                         </div>
                     </div>
+
+                    <!-- Dropdown search message -->
+                    <div class="dropdown_search_message" :class="dropdownSearchMessage == true ? 'active' : '' ">
+                        <label for="">Cerca messaggi</label>
+                        <input @keyUp="searchMessage()" v-model="inputSearchMessage" type="text" placeholder="Testo messaggio" name="" id="">
+                    </div>
                 </section>
             
                 <!-- Sezione messaggi -->
                 <section class="main_chat" v-for="(element, index) in contacts" :class="index == currentChat ? 'active' : ''">
             
                     <div v-if="element.message" class="message_user" v-for="message in element.message"
-                        :class="[message.status == 'sent' ? 'sent' : 'received', index == currentChat ? 'active' : '']">
+                        :class="[message.status == 'sent' ? 'sent' : 'received', index == currentChat ? 'active' : '', message.visible == false ? 'display_none' : 'display_block']">
                         <p v-if="message.text" class="text_message">{{message.text}}</p>
             
                         <!-- Date message and read status -->

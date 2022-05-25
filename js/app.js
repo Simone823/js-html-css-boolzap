@@ -17,6 +17,7 @@ const app = new Vue ({
                         text: "Hai portato a spasso il cane?",
                         status: "sent",
                         readStatus: true,
+                        visible: true,
                     },
 
                     {
@@ -24,6 +25,7 @@ const app = new Vue ({
                         text: "Ricordati di dargli da mangiare",
                         status: "sent",
                         readStatus: true,
+                        visible: true,
                     },
 
                     {
@@ -31,6 +33,7 @@ const app = new Vue ({
                         text: "Tutto fatto!",
                         status: "received",
                         readStatus: true,
+                        visible: true,
                     },
                 ],
             },
@@ -46,6 +49,7 @@ const app = new Vue ({
                         text: "Ciao come stai?",
                         status: "sent",
                         readStatus: true,
+                        visible: true,
                     },
 
                     {
@@ -53,6 +57,7 @@ const app = new Vue ({
                         text: "Bene grazie! Stasera ci vediamo?",
                         status: "received",
                         readStatus: true,
+                        visible: true,
                     },
 
                     {
@@ -60,6 +65,7 @@ const app = new Vue ({
                         text: "Mi piacerebbe ma devo anadare a fare la spesa.",
                         status: "sent",
                         readStatus: true,
+                        visible: true,
                     },
                 ],
             },
@@ -75,6 +81,7 @@ const app = new Vue ({
                         text: "La marianna va in campagna",
                         status: "received",
                         readStatus: true,
+                        visible: true,
                     },
 
                     {
@@ -82,6 +89,7 @@ const app = new Vue ({
                         text: "Sicuro di non aver sbagliato chat?",
                         status: "sent",
                         readStatus: true,
+                        visible: true,
                     },
 
                     {
@@ -89,6 +97,7 @@ const app = new Vue ({
                         text: "Ah scusa!",
                         status: "received",
                         readStatus: true,
+                        visible: true,
                     },
                 ],
             },
@@ -131,8 +140,14 @@ const app = new Vue ({
         // Dropdown add new user
         dropdownNewUser: false,
 
+        // dropdown Search message
+        dropdownSearchMessage: false,
+
         // Messaggio input search bar
         inputSearch: "",
+
+        // Input search message
+        inputSearchMessage: "",
 
         // Notifiche
         notification: true,
@@ -250,6 +265,7 @@ const app = new Vue ({
             }, 1500);
         },
 
+        // Funzione change dropdown more main chat toggle
         openAndCloseDropdown: function() {
             
             if (this.isOpen == false) {
@@ -260,12 +276,23 @@ const app = new Vue ({
             // console.log(this.isOpen);
         },
 
+        // Funzione change dropdownNewUser toggle
         openDropdownNewUser: function() {
             
             if (this.dropdownNewUser == false) {
                 this.dropdownNewUser = true;
             } else {
                 this.dropdownNewUser = false;
+            }
+        },
+
+        // Funzione change dropdownSearchMessage toggle
+        openDropdownSearchMessage: function() {
+            
+            if (this.dropdownSearchMessage == false) {
+                this.dropdownSearchMessage = true;
+            } else {
+                this.dropdownSearchMessage = false;
             }
         },
 
@@ -279,6 +306,23 @@ const app = new Vue ({
     
                 } else {
                     this.contacts[i].visible = false;
+                }
+            }
+        },
+
+        // Funzione cerca messaggi
+        searchMessage: function() {
+
+            for (let i = 0; i < this.contacts.length; i++) {
+
+                for (let j = 0; j < this.contacts[i].message.length; j++) {
+
+                    if (this.contacts[i].message[j].text.toLowerCase().includes(this.inputSearchMessage.toLowerCase())) {
+                      console.log(this.contacts[i].message[j].visible = true);
+                    } else {
+                      this.contacts[i].message[j].visible = false;
+                    }
+                    
                 }
             }
         },

@@ -56,11 +56,13 @@ img {
     display: block;
 }
 
-.chat_user.display_none{
+.chat_user.display_none,
+.message_user.display_none{
     display: none;
 }
 
-.chat_user.display_block {
+.chat_user.display_block,
+.message_user.display_block {
     display: flex;
 }
 
@@ -71,7 +73,8 @@ img {
     -webkit-animation: displayIcon 600ms linear;
 }
 
-.icons_control .more.active {
+.icons_control .more.active,
+.icons_control .search.active {
     background-color: rgba(129, 128, 128, 0.5);
 }
 
@@ -543,6 +546,60 @@ main {
     background-color: #2a3942;
     font-size: 20px;
 }
+
+.dropdown_search_message {
+    width: 200px;
+    padding: 35px 20px;
+    position: absolute;
+    top: 100%;
+    right: 5%;
+    z-index: 999;
+    text-align: center;
+    background-color: #202c33;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    -webkit-animation: opacity 250ms linear;
+    display: none;
+}
+
+.dropdown_search_message.active {
+    display: flex;
+}
+
+.dropdown_search_message label {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.dropdown_search_message input {
+    background-color: #111B21;
+    border-radius: 5px;
+    border: none;
+    padding: 4px 8px;
+    box-shadow: 0 0 5px black;
+}
+
+.dropdown_search_message button {
+    background-color: #005c4b9a;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 0;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 0 5px #005c4b9a;
+}
+
+.dropdown_search_message button:hover {
+    background-color: #005c4b;
+    box-shadow: 0 0 5px #005c4b;
+    transition: all 300ms linear;
+}
+
+/* ------------------------------------------------ */
 
 /* Sezione messaggi */
 .main_chat {
